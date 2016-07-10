@@ -127,14 +127,3 @@ TYPES_ORDER = {int: 0, float: 1, str: 2}
 
 def general_type(a, b):
     return max(a, b, key=lambda v: TYPES_ORDER[v])
-
-
-class auto_rollback:
-    def __init__(self, connection):
-        self.__connection = connection
-
-    def __enter__(self):
-        return self
-
-    def __exit__(self, *_):
-        self.__connection.rollback()
